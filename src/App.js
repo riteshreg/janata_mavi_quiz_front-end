@@ -5,10 +5,12 @@ import Login from './pages/Login';
 import Admin from './pages/Admin';
 
 import PrivateComponent from './components/PrivateComponent';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <div className="App">
+        <Navbar/>
         <Routes>
           <Route path='/' element={<Main/>}/>
           <Route path='/login' element={<Login/>}/>

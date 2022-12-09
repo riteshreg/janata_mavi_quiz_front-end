@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+}
+
+.nav-bar_container{
+    background-color: rgb(61, 59, 59);
+    padding: 10px 5px;
+}
+
+.nav-bar_container ul{
+    display: flex;
+    list-style: none;
+}
+.nav-bar_container ul li .link{
+    text-decoration: none;
+    color: rgb(255, 219, 219);
+    margin: 0px 20px;
+}
+.login{
+    position: absolute;
+    right: 0;
+    padding: 2px 20px;
+}
