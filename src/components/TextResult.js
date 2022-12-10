@@ -1,10 +1,7 @@
 import React from 'react'
 
 class TextResult extends React.Component{
-    constructor(props){
-        super(props)
-    }
-
+ 
 
     render(){
         const {score} = this.props

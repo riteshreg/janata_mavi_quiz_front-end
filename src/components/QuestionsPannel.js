@@ -2,9 +2,7 @@ import React from "react";
 import { nanoid } from "nanoid";
 
 class QuestionPannel extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  
 
   render() {
     const {
