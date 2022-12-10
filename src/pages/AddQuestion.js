@@ -10,7 +10,9 @@ export class AddQuestion extends Component {
     this.state = {
       question:"",
       answer:"",
-      option:[]
+      option1:"",
+      opiton2:"",
+      option3:""
     }
   }
 
@@ -25,11 +27,11 @@ export class AddQuestion extends Component {
       <div className="login-form_container">
       <div className="form_container">
 
-      <TextField id="filled-basic"  name="question"   onChange={this.handleChange}  label="quesitons" variant="filled" />
-      <TextField id="filled-basic"  name="answer"  onChange={this.handleChange} label="answer" variant="filled" />
-      <TextField id="filled-basic"  name="option1" onChange={this.handleChange}  label="incorrect option" variant="filled" />
-      <TextField id="filled-basic"  name="option2" label="incorrect option" variant="filled" />
-      <TextField id="filled-basic" name="option3"  onChange={this.handleChange}  label="incorrect option" variant="filled" />
+      <TextField id="filled-basic"  name="question" value={this.state.question}  onChange={this.handleChange}  label="quesitons" variant="filled" />
+      <TextField id="filled-basic"  name="answer" value={this.state.answer} onChange={this.handleChange} label="answer" variant="filled" />
+      <TextField id="filled-basic"  name="option1" value={this.state.option1} onChange={this.handleChange}  label="incorrect option" variant="filled" />
+      <TextField id="filled-basic"  name="option2" value={this.state.option2} label="incorrect option" variant="filled" />
+      <TextField id="filled-basic" name="option3" value={this.state.option3} onChange={this.handleChange}  label="incorrect option" variant="filled" />
 
       <Button variant='contained'>Add Question</Button>
 
