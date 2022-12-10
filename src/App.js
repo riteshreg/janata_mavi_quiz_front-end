@@ -6,6 +6,7 @@ import Admin from './pages/Admin';
 
 import PrivateComponent from './components/PrivateComponent';
 import Navbar from './components/Navbar';
+import AddQuestion from './pages/AddQuestion';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path='/login' element={<Login/>}/>
           <Route  element={<PrivateComponent/>}>
             <Route path='/admin' element={<Admin/>}/>
+            <Route path='/add-question' element={<AddQuestion/>}/>
           </Route>
         </Routes>
       </div>
