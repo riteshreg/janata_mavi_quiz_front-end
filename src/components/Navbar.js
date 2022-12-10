@@ -24,16 +24,17 @@ function Navbar() {
           localSt? <>
         <li><Link className='link' to='/admin'>Home</Link></li>
         <li><Link className='link' to='/add-question'>Add Question</Link></li>
+        <li><Link className='link' to='/'>Play Quiz</Link></li>
 
-        <Link className='link login' onClick={logout} to='/login'>Logout<AdminPanelSettingsIcon/></Link>
+        <li><Link className='link login' onClick={logout} to='/login'><span className='admin_icon'>Logout({JSON.parse(localSt)})</span></Link></li>
           </>
       :
       <>
-      <li><Link className='link' to='/'>Home</Link></li>
+      <li><Link className='link' to='/'>Play Quiz</Link></li>
       <li>
         {
            
-           <Link className='link login' to='/login'>Login<AdminPanelSettingsIcon/></Link>
+           <Link className='link login' to='/login'> <span className='admin_icon'>Admin<AdminPanelSettingsIcon/></span></Link>
 
         }     
         </li>

@@ -1,10 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 *{
     margin: 0;
+    font-family: 'Roboto', sans-serif;
+
 }
 
 .nav-bar_container{
-    background-color: rgb(61, 59, 59);
-    padding: 10px 5px;
+    background-color:rgb(48 109 68);
+    padding: 17px 5px;
+        display: flex;
+    align-items: center;
 }
 
 .nav-bar_container ul{
@@ -20,4 +26,10 @@
     position: absolute;
     right: 0;
     padding: 2px 20px;
+}
+
+.admin_icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
