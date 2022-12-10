@@ -14,7 +14,7 @@ const AddQuestion = () =>{
   })
 
   const handleChange = (event) => {
-    this.setState(
+    setFormData(
         {  
             ...formData,
             [event.target.name] : event.target.value
@@ -26,7 +26,7 @@ const AddQuestion = () =>{
  
 
   const handleAddQuestion = () => {
-    console.log(this.state);
+    console.log(formData);
   };
 
 
@@ -60,6 +60,7 @@ const AddQuestion = () =>{
           <TextField
             id="filled-basic"
             name="option2"
+            onChange={handleChange}
             value={formData.option2}
             label="incorrect option"
             variant="filled"
