@@ -1,0 +1,62 @@
+.question__container{
+    height: 100%;
+    width: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    }
+    
+    .question_pannel__container{
+        text-align: center;
+        position: absolute;
+        bottom: 0;
+        width: 80%;
+        border: 2px solid green;
+        height: 50%;
+        margin-bottom: 40px;
+    }
+    
+    .options__container{
+    
+    }
+    
+    .option{
+        width: 45%;
+        padding: 8px 10px ;
+        margin: 4px 5px;
+        background-color: #BFE0BA;
+        border: 2px solid #BFE0BA;
+        border-radius: 4px;
+        font-size: large;
+    
+    }
+    
+    .correctAns{
+        background-color: green;
+        color: white;
+    }
+    
+    .inCorrectAns{
+        background-color: red;
+        color: white;
+    
+    }
+    
+    .top_div__container{
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .text_result__container{
+        margin-top: 40px;
+    }
+    
+    .top_div__container h3{
+        margin: 2px 5px;
+        padding: 14px;
+    }
+    
+    .score_div__container{
+        text-align: center;
+        color: #1B2FEC;
+    }

@@ -1,86 +1,122 @@
-import { Button, TextField } from "@mui/material";
+import { Alert, Button, TextField } from "@mui/material";
 import React, { useState } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
+import "./pages_style.css";
 
-
-const AddQuestion = () =>{
-
-
+const AddQuestion = () => {
   const [formData, setFormData] = useState({
-    question:'',
-    answer:"",
-    option1:"",
-    option2:"",
-    option3:"" 
-  })
+    question: "",
+    correctAnswer: "",
+    option1: "",
+    option2: "",
+    option3: "",
+  });
+
+  const [progress, setProgress] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (event) => {
-    setFormData(
-        {  
-            ...formData,
-            [event.target.name] : event.target.value
-            
-        }
-      )
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
   };
-
- 
 
   const handleAddQuestion = () => {
-    console.log(formData);
+    setProgress(true);
+    fetch("https://janta-mabi-quiz.onrender.com/", {
+      method: "post",
+      body: JSON.stringify(formData),
+      headers: {
+        "Content-Type": "Application/json",
+      },
+    }).then((response) => {
+      setSuccess(true);
+      response.json().then((result) => {
+        setProgress(false);
+        setFormData({ question: "",
+        answer: "",
+        option1: "",
+        option2: "",
+        option3: "",})
+        console.log(result);
+        setTimeout(() => {
+          setSuccess(false);
+        }, 3000);
+      });
+    });
   };
 
-
-    return (
-      <div className="login-form_container">
-        <div className="form_container">
-          <TextField
-            id="filled-basic"
-            name="question"
-            value={formData.question}
-            onChange={handleChange}
-            label="quesitons"
-            variant="filled"
-          />
-          <TextField
-            id="filled-basic"
-            name="answer"
-            value={formData.answer}
-            onChange={handleChange}
-            label="answer"
-            variant="filled"
-          />
-          <TextField
-            id="filled-basic"
-            name="option1"
-            value={formData.option1}
-            onChange={handleChange}
-            label="incorrect option"
-            variant="filled"
-          />
-          <TextField
-            id="filled-basic"
-            name="option2"
-            onChange={handleChange}
-            value={formData.option2}
-            label="incorrect option"
-            variant="filled"
-          />
-          <TextField
-            id="filled-basic"
-            name="option3"
-            value={formData.option3}
-            onChange={handleChange}
-            label="incorrect option"
-            variant="filled"
-          />
-
-          <Button variant="contained" onClick={handleAddQuestion}>
-            Add Question
-          </Button>
-        </div>
+  return (
+    <div className="login-form_container add_main_container ">
+      <div className="add_question_container">
+        <h1>Add your Question</h1>
+        <TextField
+          style={{ margin: "10px" }}
+          id="filled-basic"
+          name="question"
+          className="add_question_form"
+          value={formData.question}
+          onChange={handleChange}
+          label="quesitons"
+          variant="filled"
+        />
+        <TextField
+          style={{ margin: "10px" }}
+          id="filled-basic"
+          name="correctAnswer"
+          className="add_question_form"
+          value={formData.answer}
+          onChange={handleChange}
+          label="answer"
+          variant="filled"
+        />
+        <TextField
+          style={{ margin: "10px" }}
+          id="filled-basic"
+          name="option1"
+          className="add_question_form"
+          value={formData.option1}
+          onChange={handleChange}
+          label="incorrect option"
+          variant="filled"
+        />
+        <TextField
+          style={{ margin: "10px" }}
+          id="filled-basic"
+          name="option2"
+          className="add_question_form"
+          onChange={handleChange}
+          value={formData.option2}
+          label="incorrect option"
+          variant="filled"
+        />
+        <TextField
+          style={{ margin: "10px" }}
+          id="filled-basic"
+          name="option3"
+          className="add_question_form"
+          value={formData.option3}
+          onChange={handleChange}
+          label="incorrect option"
+          variant="filled"
+        />
+        {progress && <CircularProgress />}
+        <Button
+          disabled={progress}
+          variant="contained"
+          onClick={handleAddQuestion}
+        >
+          Add Question
+        </Button>
+        {success && (
+          <Alert severity="success">
+            the question has been successfully uploaded!
+          </Alert>
+        )}
       </div>
-    );
-  }
-
+    </div>
+  );
+};
 
 export default AddQuestion;
