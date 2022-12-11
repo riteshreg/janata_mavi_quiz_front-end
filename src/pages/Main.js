@@ -15,7 +15,8 @@ export class Main extends Component {
       options: [],
       isClicked: "",
       score: 0,
-      goToScore:false
+      goToScore:false,
+      showTheReload:true,
     };
   }
 
@@ -26,8 +27,9 @@ export class Main extends Component {
           this.setState({ questions: result });
           this.setOptionsToState(result);
           this.setState({
+            showTheReload: false,
             question: result[this.state.currentQuestionIndex].question,
-            category: result[this.state.currentQuestionIndex].category
+            category: result[this.state.currentQuestionIndex].category,
           });
         });
       })
@@ -130,6 +132,7 @@ export class Main extends Component {
               isClicked={this.state.isClicked}
               options={this.state.options}
               question={this.state.question}
+              showTheReload={this.state.showTheReload}
             />
           )}
         </div>

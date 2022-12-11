@@ -35,7 +35,7 @@ const AddQuestion = () => {
       response.json().then((result) => {
         setProgress(false);
         setFormData({ question: "",
-        answer: "",
+        correctAnswer: "",
         option1: "",
         option2: "",
         option3: "",})
@@ -50,7 +50,7 @@ const AddQuestion = () => {
   return (
     <div className="login-form_container add_main_container ">
       <div className="add_question_container">
-        <h1>Add your Question</h1>
+        <h4>Add your Question</h4>
         <TextField
           style={{ margin: "10px" }}
           id="filled-basic"
@@ -66,7 +66,7 @@ const AddQuestion = () => {
           id="filled-basic"
           name="correctAnswer"
           className="add_question_form"
-          value={formData.answer}
+          value={formData.correctAnswer}
           onChange={handleChange}
           label="answer"
           variant="filled"
@@ -109,13 +109,15 @@ const AddQuestion = () => {
         >
           Add Question
         </Button>
-        {success && (
+        
+      </div>
+      { success &&( 
           <Alert severity="success">
-            the question has been successfully uploaded!
+            the question has been successfully uploaded to the database
           </Alert>
         )}
-      </div>
     </div>
+    
   );
 };
 

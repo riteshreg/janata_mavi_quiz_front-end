@@ -26,14 +26,16 @@
 }
 
 
-
+.add_main_container{
+    height: 92vh;
+}
 .add_question_container{
     border-radius: 8px;
-    width: 40%;
+    width: 35%;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 80%;
+    min-height: 70%;
     max-height: 100%;
     padding: 15px;
     flex-direction: column;
@@ -41,6 +43,7 @@
 }
 
 .add_question_form{
+    border-radius: 6px;
     background-color: white;
     width: 85%;
     margin: 8px 5px;

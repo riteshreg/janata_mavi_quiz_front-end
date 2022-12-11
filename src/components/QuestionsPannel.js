@@ -1,5 +1,7 @@
 import React from "react";
 import { nanoid } from "nanoid";
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 class QuestionPannel extends React.Component {
   
@@ -12,10 +14,12 @@ class QuestionPannel extends React.Component {
       handleNextQuestion,
       question,
       options,
+      showTheReload
     } = this.props;
 
     return (
       <div className="question_pannel__container">
+          {showTheReload && <CircularProgress/>}
         <h2 className="question">{question}</h2>
         <div className="options__container">
           {options &&
