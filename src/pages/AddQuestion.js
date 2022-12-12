@@ -14,6 +14,8 @@ const AddQuestion = () => {
 
   const [progress, setProgress] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [emptyErr, setEmptyErr] = useState(false)
+
 
   const handleChange = (event) => {
     setFormData({
@@ -23,6 +25,11 @@ const AddQuestion = () => {
   };
 
   const handleAddQuestion = () => {
+    if(!formData.question || !formData.correctAnswer || !formData
+      .option1 || !formData.option2 || !formData.option3){
+        setEmptyErr(true)
+      }else{
+        setEmptyErr(false)
     setProgress(true);
     fetch("https://janta-mabi-quiz.onrender.com/", {
       method: "post",
@@ -45,6 +52,7 @@ const AddQuestion = () => {
         }, 3000);
       });
     });
+  }
   };
 
   return (
@@ -59,7 +67,7 @@ const AddQuestion = () => {
           value={formData.question}
           onChange={handleChange}
           label="quesitons"
-          variant="filled"
+          variant="outlined"
         />
         <TextField
           style={{ margin: "10px" }}
@@ -69,7 +77,7 @@ const AddQuestion = () => {
           value={formData.correctAnswer}
           onChange={handleChange}
           label="answer"
-          variant="filled"
+          variant="outlined"
         />
         <TextField
           style={{ margin: "10px" }}
@@ -79,7 +87,7 @@ const AddQuestion = () => {
           value={formData.option1}
           onChange={handleChange}
           label="incorrect option"
-          variant="filled"
+          variant="outlined"
         />
         <TextField
           style={{ margin: "10px" }}
@@ -89,7 +97,7 @@ const AddQuestion = () => {
           onChange={handleChange}
           value={formData.option2}
           label="incorrect option"
-          variant="filled"
+          variant="outlined"
         />
         <TextField
           style={{ margin: "10px" }}
@@ -99,12 +107,14 @@ const AddQuestion = () => {
           value={formData.option3}
           onChange={handleChange}
           label="incorrect option"
-          variant="filled"
+          variant="outlined"
         />
         {progress && <CircularProgress />}
+        {emptyErr && <Alert className="login_form" severity="error">Please enter all the require data</Alert>}
+
         <Button
           disabled={progress}
-          variant="contained"
+          variant="outlined"
           onClick={handleAddQuestion}
         >
           Add Question

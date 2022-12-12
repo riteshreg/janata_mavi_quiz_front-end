@@ -6,6 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { TablePagination } from '@mui/material';
 
 export class Admin extends Component {
@@ -39,10 +40,16 @@ export class Admin extends Component {
     // setPage(0);
   };
 
+
+  handleDeleteClick  = (row) =>{
+
+    const newData = this.state.fetchData.filter((data)=> row._id !== data._id)
+    this.setState({fetchData: newData})
+  }
   
   render() {
    return (
-      <div>
+      <>
         <TableContainer component={Paper}>
       <Table  aria-label="simple table">
         <TableHead>
@@ -52,15 +59,17 @@ export class Admin extends Component {
             <TableCell align="right">Option2</TableCell>
             <TableCell align="right">Option3</TableCell>
             <TableCell align="right">Correct Answer</TableCell>
+            <TableCell align="right">delete</TableCell>
+
           </TableRow>
         </TableHead>
         <TableBody>
           {this.state.fetchData.slice(this.state.page * this.state.rowsPerPage, this.state.page * this.state.rowsPerPage + this.state.rowsPerPage)
 .map((row) => (
-            <TableRow
+        
+            <TableRow 
               key={row._id}
-            >
-              <TableCell component="th" scope="row">
+            ><TableCell component="th" scope="row">
                 {row.question}
               </TableCell>
               <TableCell component="th" align="right" scope="row">
@@ -69,21 +78,24 @@ export class Admin extends Component {
               <TableCell align="right">{row.option2}</TableCell>
               <TableCell align="right">{row.option3}</TableCell>
               <TableCell align="right">{row.correctAnswer}</TableCell>
+              <TableCell align="center"><DeleteIcon onClick={()=>this.handleDeleteClick(row)}/></TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-        <TablePagination
+        ))}</TableBody>
+
+        
+      </Table>
+     
+    </TableContainer>
+    <TablePagination
         rowsPerPageOptions={[10, 25, 100]}
-        component="div"
         count={this.state.fetchData.length}
         rowsPerPage={this.state.rowsPerPage}
         page={this.state.page}
+        component='div'
         onPageChange={this.handleChangePage}
         onRowsPerPageChange={this.handleChangeRowsPerPage}
         />
-      </Table>
-    </TableContainer>
-      </div>
+    </>
     )
   }
 }
