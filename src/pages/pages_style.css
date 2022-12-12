@@ -47,3 +47,14 @@
     margin: 8px 5px;
     padding: 1px;
 }
+
+.correctAns{
+    background-color: green;
+    color: white;
+}
+
+.inCorrectAns{
+    background-color: red;
+    color: white;
+
+}

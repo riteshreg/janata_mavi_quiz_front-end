@@ -8,6 +8,7 @@ import PrivateComponent from './components/PrivateComponent';
 import Navbar from './components/Navbar';
 import AddQuestion from './pages/AddQuestion';
 import { useState } from 'react';
+import Score from './pages/Score'
 
 function App() {
   const [score, setScore] = useState(0)
@@ -17,8 +18,9 @@ function App() {
         <Navbar/>
         <Routes>
           <Route path='/' element={<Main score={score} setScore={setScore}/>}/>
-          <Route path='/' element={<Login  score={score}/>}/>
+          <Route path='/score' element={<Score  score={score}/>}/>
           <Route path='/login' element={<Login/>}/>
+
           <Route  element={<PrivateComponent/>}>
             <Route path='/admin' element={<Admin/>}/>
             <Route path='/add-question' element={<AddQuestion/>}/>

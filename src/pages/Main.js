@@ -2,11 +2,14 @@ import React, { Component } from "react";
 import { Navigate } from "react-router-dom";
 import QuestionPannel from "../components/QuestionsPannel";
 import TextResult from "../components/TextResult";
+import './pages_style.css'
 
 export class Main extends Component {
   constructor(props) {
-    
     super(props);
+
+    this.props.setScore(0)
+
     this.state = {
       questions: [],
       question: "",
@@ -14,7 +17,6 @@ export class Main extends Component {
       currentQuestionIndex: 0,
       options: [],
       isClicked: "",
-      score: 0,
       goToScore:false,
       showTheReload:true,
     };
@@ -70,6 +72,7 @@ export class Main extends Component {
     this.state.questions.length>this.state.currentQuestionIndex+1 ? this.setState((state) => ({
       currentQuestionIndex: state.currentQuestionIndex + 1
     })): this.setState({goToScore:true})
+    
     this.setState({ isClicked: "" });
 
    
@@ -117,6 +120,7 @@ export class Main extends Component {
     const {score} = this.props
 
     return (
+      <div className="main_component_container">
       <div className="main__container">
        {this.state.questions &&  <TextResult  
         category={this.state.category}
@@ -133,9 +137,11 @@ export class Main extends Component {
               options={this.state.options}
               question={this.state.question}
               showTheReload={this.state.showTheReload}
+
             />
           )}
         </div>
+      </div>
       </div>
     );
   }
