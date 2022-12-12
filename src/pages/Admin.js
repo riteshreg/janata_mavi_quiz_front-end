@@ -8,7 +8,6 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { TablePagination } from "@mui/material";
-import CircularProgress from "@mui/material/CircularProgress";
 
 
 export class Admin extends Component {
