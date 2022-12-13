@@ -87,7 +87,7 @@ const Update = () => {
     <div className="login-form_container add_main_container ">
       {!firstRenderProgress && (
         <div className="add_question_container">
-          <h4>Add your Question</h4>
+          <h4>Update the Selected Question</h4>
           <TextField
             style={{ margin: "10px" }}
             id="filled-basic"
@@ -150,7 +150,7 @@ const Update = () => {
             variant="outlined"
             onClick={handleAddQuestion}
           >
-            Add Question
+            Update
           </Button>
         </div>
       )}

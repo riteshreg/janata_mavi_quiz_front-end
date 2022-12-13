@@ -60,7 +60,7 @@ export class Main extends Component {
       size={90}
       key={this.state.currentQuestionIndex}
       onComplete={()=>{this.setState({isClicked:true})}}
-      duration={15}
+      duration={20}
       colors={['#004777', '#F7B801', '#A30000', '#A30000']}
       colorsTime={[7, 5, 2, 0]}
     >
@@ -111,20 +111,17 @@ export class Main extends Component {
       this.state.isClicked ===
         this.state.questions[this.state.currentQuestionIndex].correctAnswer
     ) {
-      console.log("right answer");
       return "correctAns";
     } else if (
       option === this.state.isClicked &&
       this.state.isClicked !==
         this.state.questions[this.state.currentQuestionIndex].correctAnswer
     ) {
-      console.log("wrong answer");
       return "inCorrectAns";
     } else if (
       option ===
       this.state.questions[this.state.currentQuestionIndex].correctAnswer
     ) {
-      console.log("last  answer");
       return "correctAns";
     }
   };
