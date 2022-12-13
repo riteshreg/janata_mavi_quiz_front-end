@@ -61,7 +61,6 @@ const Login = () => {
           Navigate("/admin");
         }else{
           setCirProgresss(false);
-          console.log("else result", result)
           setEmptyErr(result.err)
         }
       });
