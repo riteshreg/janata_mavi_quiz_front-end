@@ -23,10 +23,6 @@ const Update = () => {
   const [emptyErr, setEmptyErr] = useState(false);
 
 
-  if(!params.id){
-    Navigate('/admin')
-  };
-
   const handleChange = (event) => {
     setFormData({
       ...formData,
@@ -36,6 +32,7 @@ const Update = () => {
 
   useEffect(() => {
     setFirstRenderProgress(true)
+    if(params.id){
     fetch(
       `https://janta-mabi-quiz.onrender.com/get_data_for_update/${params.id}`
     ).then((response) => {
@@ -50,6 +47,7 @@ const Update = () => {
         setFirstRenderProgress(false)
       });
     });
+  }
   },[]);
 
   const handleAddQuestion = () => {
