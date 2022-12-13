@@ -17,9 +17,15 @@ const Update = () => {
 
   const params = useParams();
   const Navigate = useNavigate();
+
   const [progress, setProgress] = useState(false);
   const [firstRenderProgress, setFirstRenderProgress] = useState(false);
   const [emptyErr, setEmptyErr] = useState(false);
+
+
+  if(!params.id){
+    Navigate('/admin')
+  };
 
   const handleChange = (event) => {
     setFormData({
@@ -150,11 +156,7 @@ const Update = () => {
           </Button>
         </div>
       )}
-      {/* { success &&( 
-          <Alert severity="success">
-            the question has been successfully uploaded to the database
-          </Alert>
-        )} */}
+      
     </div>
     </div>
   );
