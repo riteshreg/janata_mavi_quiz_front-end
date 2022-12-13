@@ -31,8 +31,8 @@ const Update = () => {
   };
 
   useEffect(() => {
-    setFirstRenderProgress(true)
     if(params.id){
+      setFirstRenderProgress(true)
     fetch(
       `https://janta-mabi-quiz.onrender.com/get_data_for_update/${params.id}`
     ).then((response) => {
@@ -48,7 +48,7 @@ const Update = () => {
       });
     });
   }
-  },[]);
+  },[params.id]);
 
   const handleAddQuestion = () => {
     if (
