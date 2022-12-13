@@ -83,15 +83,15 @@ export class Admin extends Component {
                 )
                 .map((row) => (
                   <TableRow   key={row._id}>
-                    <TableCell component="th" style={{fontSize:"20px", fontWeight:"500"}} scope="row">
+                    <TableCell component="th" style={{fontSize:"16px", fontWeight:"500"}} scope="row">
                       {row.question}
                     </TableCell>
-                    <TableCell component="th" align="right" scope="row">
+                    <TableCell component="th" tyle={{fontSize:"16px", fontWeight:"500"}} align="right" scope="row">
                       {row.option1}
                     </TableCell>
-                    <TableCell style={{fontSize:"16px"}} align="right">{row.option2}</TableCell>
-                    <TableCell   style={{fontSize:"16px"}} align="right">{row.option3}</TableCell>
-                    <TableCell  style={{fontSize:"16px"}} align="right">{row.correctAnswer}</TableCell>
+                    <TableCell style={{fontSize:"16px", fontWeight:"500"}} align="right">{row.option2}</TableCell>
+                    <TableCell   tyle={{fontSize:"16px", fontWeight:"500"}} align="right">{row.option3}</TableCell>
+                    <TableCell  tyle={{fontSize:"16px", fontWeight:"500"}} align="right">{row.correctAnswer}</TableCell>
                     
                     <TableCell align="center">
                      <Link to={`/update/${row._id}`}><UpdateIcon/></Link>
