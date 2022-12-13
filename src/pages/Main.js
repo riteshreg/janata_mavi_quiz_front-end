@@ -57,12 +57,12 @@ export class Main extends Component {
   UrgeWithPleasureComponent = () => (
     <CountdownCircleTimer
       isPlaying={!this.state.isClicked}
-      size={90}
+      size={86}
       key={this.state.currentQuestionIndex}
       onComplete={()=>{this.setState({isClicked:true})}}
       duration={20}
-      colors={['#004777', '#F7B801', '#A30000', '#A30000']}
-      colorsTime={[7, 5, 2, 0]}
+      colors={['#05b529', '#F7B801', '#ab0505', '#ab0505']}
+      colorsTime={[20,10, 3, 0]}
     >
       {({ remainingTime }) => remainingTime}
     </CountdownCircleTimer>
