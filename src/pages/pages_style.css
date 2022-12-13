@@ -62,3 +62,19 @@
 /* .countDownTimer{
     height: 10px;
 } */
+
+.scoreDiv{
+    min-height: 90vh;
+    min-width: 100vh;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.score_cardAction{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ 
+}

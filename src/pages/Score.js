@@ -1,23 +1,52 @@
-import React, { Component } from 'react'
-import CssBaseline from '@mui/material/CssBaseline';
+import * as React from 'react';
 import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import { useNavigate } from 'react-router-dom';
 
-export class Score extends Component {
-  render() {
-    const {score} = this.props
-    return (
-      <React.Fragment>
-      <CssBaseline />
-      <Container sx={{ bgcolor: '#cfe8fc', height: '60vh' }} className="score_container" maxWidth="sm">
-        <Box>
-          <h1>{score}</h1>
-        </Box>
-      </Container>
-    </React.Fragment>
-  
-    )
-  }
+
+const bull = (
+  <Box
+    component="span"
+    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
+  >
+    •
+  </Box>
+);
+
+export default function BasicCard({score}) {
+
+  const Navigate = useNavigate();
+
+  React.useEffect(()=>{
+    if(localStorage.getItem("login")){
+      Navigate('/')
+    }
+  })
+
+  return (
+    <div className="scoreDiv">
+    <Card sx={{ minWidth: 605, maxWidth:800}}>
+      <CardContent>
+        <Typography variant="h2"  component="div" color="text.secondary" gutterBottom>
+         Janata Quiz App
+        </Typography>
+      
+        <Typography variant="h1" color="text.secondary">
+          {score}/10
+        </Typography>
+        
+        <Typography variant="h4" color="text.secondary">
+          Your Total Score
+        </Typography>
+      </CardContent>
+      <CardActions className="score_cardAction">
+        <Button size="small" onClick={()=>Navigate('/')}>Restart Quiz</Button>
+      </CardActions>
+    </Card>
+    </div>
+  );
 }
-
-export default Score

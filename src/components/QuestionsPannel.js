@@ -27,7 +27,7 @@ class QuestionPannel extends React.Component {
       <div className="question_pannel__container">
        { <Card sx={{ maxWidth: 1500, minWidth: 800  }} >
        {showTheReload && <CircularProgress/>}
-       {!showTheReload&&<><Typography gutterBottom variant="h3" component="div">
+       {!showTheReload&&<><Typography gutterBottom variant="h4" component="div">
           {`${question}?`}
         </Typography>
       <CardActions >
