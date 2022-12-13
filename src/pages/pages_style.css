@@ -78,3 +78,16 @@
     justify-content: center;
  
 }
+
+/* .table_row_linner{
+    width: 100vw;               
+} */
+
+.progress_table_row{
+    width:100%
+}
+
+.table_admin_container{
+    font-size: 23px;
+    font-weight: 600;
+}

@@ -8,7 +8,10 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { TablePagination } from "@mui/material";
-
+import Box from '@mui/material/Box';
+import LinearProgress from '@mui/material/LinearProgress';
+import UpdateIcon from '@mui/icons-material/Update';
+import { Link } from "react-router-dom";
 
 export class Admin extends Component {
   constructor(props) {
@@ -49,10 +52,14 @@ export class Admin extends Component {
  
   };
 
+
   render() {
     return (
       <>
         <TableContainer component={Paper}>
+        {this.state.fetchData.length === 0 && <Box sx={{ width: '100%'}}>
+      <LinearProgress sx={{height:"6px"}} />
+      </Box>}
           <Table aria-label="simple table">
             <TableHead>
               <TableRow>
@@ -61,10 +68,13 @@ export class Admin extends Component {
                 <TableCell align="right">Option2</TableCell>
                 <TableCell align="right">Option3</TableCell>
                 <TableCell align="right">Correct Answer</TableCell>
+                <TableCell align="right">update</TableCell>
                 <TableCell align="right">delete</TableCell>
               </TableRow>
-            </TableHead>
+              </TableHead>
+                        
             <TableBody>
+           
               {this.state.fetchData
                 .slice(
                   this.state.page * this.state.rowsPerPage,
@@ -72,23 +82,27 @@ export class Admin extends Component {
                     this.state.rowsPerPage
                 )
                 .map((row) => (
-                  <TableRow key={row._id}>
-                    <TableCell component="th" scope="row">
+                  <TableRow   key={row._id}>
+                    <TableCell component="th" style={{fontSize:"20px", fontWeight:"500"}} scope="row">
                       {row.question}
                     </TableCell>
                     <TableCell component="th" align="right" scope="row">
                       {row.option1}
                     </TableCell>
-                    <TableCell align="right">{row.option2}</TableCell>
-                    <TableCell align="right">{row.option3}</TableCell>
-                    <TableCell align="right">{row.correctAnswer}</TableCell>
+                    <TableCell style={{fontSize:"16px"}} align="right">{row.option2}</TableCell>
+                    <TableCell   style={{fontSize:"16px"}} align="right">{row.option3}</TableCell>
+                    <TableCell  style={{fontSize:"16px"}} align="right">{row.correctAnswer}</TableCell>
+                    
                     <TableCell align="center">
-                     
+                     <Link to={`/update/${row._id}`}><UpdateIcon/></Link>
+                    </TableCell>
+
+                    <TableCell   align="center">                
                      <DeleteIcon style={{cursor:"pointer"}}
                         onClick={() => this.handleDeleteClick(row._id)}
                       />
+                      </TableCell>
                    
-                    </TableCell>
                   </TableRow>
                 ))}
             </TableBody>

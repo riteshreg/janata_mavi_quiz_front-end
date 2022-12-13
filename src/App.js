@@ -9,6 +9,7 @@ import Navbar from './components/Navbar';
 import AddQuestion from './pages/AddQuestion';
 import { useState } from 'react';
 import Score from './pages/Score'
+import Update from './pages/Update';
 
 function App() {
   const [score, setScore] = useState(0)
@@ -24,6 +25,8 @@ function App() {
           <Route  element={<PrivateComponent/>}>
             <Route path='/admin' element={<Admin/>}/>
             <Route path='/add-question' element={<AddQuestion/>}/>
+            <Route path='/update/:id' element={<Update/>}/>
+
           </Route>
         </Routes>
       </div>
