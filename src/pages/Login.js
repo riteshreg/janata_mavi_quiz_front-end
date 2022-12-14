@@ -74,6 +74,7 @@ const Login = () => {
         <h1>Login Page</h1>
         <FormControl className="login_form">
           <TextField
+          type="text"
             name="userName"
             value={loginId.userId}
             onChange={handleChange}
@@ -87,6 +88,7 @@ const Login = () => {
         </FormControl>
         <FormControl className="login_form">
           <TextField
+            type="password"
             name="password"
             value={loginId.password}
             onChange={handleChange}
