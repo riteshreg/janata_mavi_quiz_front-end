@@ -141,3 +141,20 @@
 .css-9vnvu0-MuiCardContent-root {
     padding: 0;
 }
+
+
+
+/* blog container */
+
+.TitleBlogDiv{
+    margin-top: 150px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main_blog_content_did{
+    margin-top: 40px;
+    padding: 8px;
+}
