@@ -22,17 +22,24 @@
     color: rgb(255, 219, 219);
     margin: 0px 20px;
 }
-.login{
+/* .login{
     position: absolute;
     right: 0;
     padding: 2px 20px;
+} */
+.right_nav_item{
+  position: absolute;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
-
+/* 
 .admin_icon{
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} */
 
 
 

@@ -10,6 +10,7 @@ import AddQuestion from './pages/AddQuestion';
 import { useState } from 'react';
 import Score from './pages/Score'
 import Update from './pages/Update';
+import AboutUs from './pages/AboutUs';
 
 function App() {
   const [score, setScore] = useState(0)
@@ -21,6 +22,7 @@ function App() {
           <Route path='/' element={<Main score={score} setScore={setScore}/>}/>
           <Route path='/score' element={<Score  score={score}/>}/>
           <Route path='/login' element={<Login/>}/>
+          <Route path='/about' element={<AboutUs/>}/>
 
           <Route  element={<PrivateComponent/>}>
             <Route path='/admin' element={<Admin/>}/>
