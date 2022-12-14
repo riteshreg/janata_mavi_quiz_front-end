@@ -25,13 +25,13 @@ export class Admin extends Component {
   }
 
   componentDidMount() {
-    if(this.state.fetchData.length === 0){
-    fetch("https://janta-mabi-quiz.onrender.com/").then((response) => {
-      response.json().then((result) => {
-        this.setState({ fetchData: result });
+        if (this.state.fetchData.length === 0) {
+      fetch("https://janta-mabi-quiz.onrender.com/").then((response) => {
+        response.json().then((result) => {
+          this.setState({ fetchData: result });
+        });
       });
-    });
-  }
+    }
   }
 
   handleChangePage = (event, newPage) => {
@@ -61,80 +61,96 @@ export class Admin extends Component {
             <Box sx={{ width: "100%" }}>
               <LinearProgress sx={{ height: "6px" }} />
             </Box>
+          )}     
+
+          {this.state.fetchData.length > 0 && (
+            <Table aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell>Questions</TableCell>
+                  <TableCell align="right">Option1</TableCell>
+                  <TableCell align="right">Option2</TableCell>
+                  <TableCell align="right">Option3</TableCell>
+                  <TableCell align="right">Correct Answer</TableCell>
+                  <TableCell align="center">tools</TableCell>
+                </TableRow>
+              </TableHead>
+
+              <TableBody>
+                {this.state.fetchData
+                  .slice(
+                    this.state.page * this.state.rowsPerPage,
+                    this.state.page * this.state.rowsPerPage +
+                      this.state.rowsPerPage
+                  )
+                  .map((row,index) => (
+                    <TableRow key={row._id}>
+                      <TableCell
+                        component="th"
+                        style={{ fontSize: "16px", fontWeight: "500" }}
+                        scope="row"
+                      >
+                        {row.question}
+                      </TableCell>
+                      <TableCell
+                        component="th"
+                        tyle={{ fontSize: "16px", fontWeight: "500" }}
+                        align="right"
+                        scope="row"
+                      >
+                        {row.option1}
+                      </TableCell>
+                      <TableCell
+                        style={{ fontSize: "16px", fontWeight: "500" }}
+                        align="right"
+                      >
+                        {row.option2}
+                      </TableCell>
+                      <TableCell
+                        tyle={{ fontSize: "16px", fontWeight: "500" }}
+                        align="right"
+                      >
+                        {row.option3}
+                      </TableCell>
+                      <TableCell
+                        tyle={{ fontSize: "16px", fontWeight: "500" }}
+                        align="right"
+                      >
+                        {row.correctAnswer}
+                      </TableCell>
+
+                      <TableCell align="right">
+                        {/* for edit */}
+                        <div
+                          className="iconDiv"
+                          style={{
+                            display: "flex",
+                            alignItem: "center",
+                            justifyContent: "end",
+                            padding: "2px 3px",
+                          }}
+                        >
+                          <Link to={`/update/${row._id}`}>
+                            <EditIcon
+                              style={{ padding: "2px", margin: "0px 5px" }}
+                            />
+                          </Link>
+                          {/* for update */}
+                          <DeleteIcon
+                            style={{
+                              cursor: "pointer",
+                              padding: "2px",
+                              margin: "0px 5px",
+                            }}
+                            onClick={() => this.handleDeleteClick(row._id)}
+                          />
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+              </TableBody>
+            </Table>
           )}
-          <Table aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Questions</TableCell>
-                <TableCell align="right">Option1</TableCell>
-                <TableCell align="right">Option2</TableCell>
-                <TableCell align="right">Option3</TableCell>
-                <TableCell align="right">Correct Answer</TableCell>
-                <TableCell align="center">tools</TableCell>
-              </TableRow>
-            </TableHead>
-
-            <TableBody>
-              {this.state.fetchData
-                .slice(
-                  this.state.page * this.state.rowsPerPage,
-                  this.state.page * this.state.rowsPerPage +
-                    this.state.rowsPerPage
-                )
-                .map((row) => (
-                  <TableRow key={row._id}>
-                    <TableCell
-                      component="th"
-                      style={{ fontSize: "16px", fontWeight: "500" }}
-                      scope="row"
-                    >
-                      {row.question}
-                    </TableCell>
-                    <TableCell
-                      component="th"
-                      tyle={{ fontSize: "16px", fontWeight: "500" }}
-                      align="right"
-                      scope="row"
-                    >
-                      {row.option1}
-                    </TableCell>
-                    <TableCell
-                      style={{ fontSize: "16px", fontWeight: "500" }}
-                      align="right"
-                    >
-                      {row.option2}
-                    </TableCell>
-                    <TableCell
-                      tyle={{ fontSize: "16px", fontWeight: "500" }}
-                      align="right"
-                    >
-                      {row.option3}
-                    </TableCell>
-                    <TableCell
-                      tyle={{ fontSize: "16px", fontWeight: "500" }}
-                      align="right"
-                    >
-                      {row.correctAnswer}
-                    </TableCell>
-
-                    <TableCell align="right">
-                      {/* for edit */}
-                      <div className="iconDiv" style={{display:"flex", alignItem:"center",justifyContent:"end", padding:"2px 3px"}}>
-
-                      <Link to={`/update/${row._id}`}>
-                        <EditIcon style={{padding:"2px", margin:"0px 5px"}} />
-                      </Link>
-                      {/* for update */}
-                      <DeleteIcon
-                        style={{ cursor: "pointer",padding:"2px", margin:"0px 5px" }}
-                        onClick={() => this.handleDeleteClick(row._id)}
-                      />
-                       </div>
-                    </TableCell>
-                  </TableRow>
-                ))}
-            </TableBody>
-          </Table>
         </TableContainer>
         <TablePagination
           rowsPerPageOptions={[10, 25, 100]}
