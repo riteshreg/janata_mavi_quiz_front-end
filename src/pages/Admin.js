@@ -12,6 +12,11 @@ import Box from "@mui/material/Box";
 import LinearProgress from "@mui/material/LinearProgress";
 import EditIcon from "@mui/icons-material/Edit";
 import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
+import CircularProgress from "@mui/material/CircularProgress";
+
 
 export class Admin extends Component {
   constructor(props) {
@@ -20,12 +25,14 @@ export class Admin extends Component {
       fetchData: [],
       page: 0,
       rowsPerPage: 10,
-      isDeleted: false,
+      shouldDeletedId: null,
+      openModal: false,
+      progress:false,
     };
   }
 
   componentDidMount() {
-        if (this.state.fetchData.length === 0) {
+    if (this.state.fetchData.length === 0) {
       fetch("https://janta-mabi-quiz.onrender.com/").then((response) => {
         response.json().then((result) => {
           this.setState({ fetchData: result });
@@ -45,12 +52,32 @@ export class Admin extends Component {
     // setPage(0);
   };
 
-  handleDeleteClick = (id) => {
-    const newData = this.state.fetchData.filter((data) => id !== data._id);
-    this.setState({ fetchData: newData });
-    fetch(`https://janta-mabi-quiz.onrender.com/delete/${id}`, {
+  ModalStyle = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    boxShadow: 24,
+    p: 4,
+    borderRadius:"8px",
+    border:"2px solid green"
+  };
+
+  handleDelete = () => {
+
+    this.setState({progress:true})
+    fetch(`https://janta-mabi-quiz.onrender.com/delete/${this.state.shouldDeletedId}`, {
       method: "delete",
-    });
+    }).then((response)=>{
+      const newData = this.state.fetchData.filter((data) => this.state.shouldDeletedId !== data._id);
+      this.setState({ fetchData: newData,openModal:false,progress:false });
+
+    })
+   
+
+   
   };
 
   render() {
@@ -61,7 +88,28 @@ export class Admin extends Component {
             <Box sx={{ width: "100%" }}>
               <LinearProgress sx={{ height: "6px" }} />
             </Box>
-          )}     
+          )}
+
+          <Modal
+            open={this.state.openModal}
+            onClose={() => this.setState({ openModal: false })}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={this.ModalStyle}>
+              <Typography className="delete_modal" id="modal-modal-title" variant="h6" component="h2">
+              <span className="progress_circle_div"> Are you sure?
+                {this.state.progress && <CircularProgress sx={{marginTop:"10px"}}/>}
+                </span>
+              </Typography>
+
+              <div className="button_container">
+                <Button variant="outlined" disabled={this.state.progress}  onClick={()=>this.setState({openModal:false})}>cancel</Button>
+
+                <Button variant="outlined" disabled={this.state.progress} onClick={this.handleDelete}>Delete</Button>
+              </div>
+            </Box>
+          </Modal>
 
           {this.state.fetchData.length > 0 && (
             <Table aria-label="simple table">
@@ -83,7 +131,7 @@ export class Admin extends Component {
                     this.state.page * this.state.rowsPerPage +
                       this.state.rowsPerPage
                   )
-                  .map((row,index) => (
+                  .map((row, index) => (
                     <TableRow key={row._id}>
                       <TableCell
                         component="th"
@@ -142,7 +190,7 @@ export class Admin extends Component {
                               padding: "2px",
                               margin: "0px 5px",
                             }}
-                            onClick={() => this.handleDeleteClick(row._id)}
+                            onClick={() => this.setState({openModal:true, shouldDeletedId:row._id} )}
                           />
                         </div>
                       </TableCell>
