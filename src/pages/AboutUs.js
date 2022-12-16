@@ -10,7 +10,7 @@ function AboutUs() {
   const saugatImg = "https://iili.io/Ho1iHlf.jpg"
   const anupImg = "https://iili.io/Ho1iMRp.jpg"
   const gopalImg = "https://scontent.fbdp1-1.fna.fbcdn.net/v/t1.15752-9/318416857_3344168082463081_5109954501792649591_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=ae9488&_nc_ohc=i0zlFS9x6SYAX_Makh0&_nc_ht=scontent.fbdp1-1.fna&oh=03_AdTn3y7giOvUmH_AGoj0he2y3wQVLm5OnXaFCddzt7qSNw&oe=63C1258C"
-  const nabinaImg = "https://media.gq-magazine.co.uk/photos/5f3128b56fac12aa860925f0/1:1/w_1080,h_1080,c_limit/20200810-Chris-Hemsworth-06.jpg"
+  const nabinaImg = "https://iili.io/HoZA2fI.jpg"
 
 
 
