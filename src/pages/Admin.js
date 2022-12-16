@@ -16,6 +16,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import CircularProgress from "@mui/material/CircularProgress";
+import './pages_style.css'
 
 
 export class Admin extends Component {
@@ -110,6 +111,7 @@ export class Admin extends Component {
               </div>
             </Box>
           </Modal>
+
 
           {this.state.fetchData.length > 0 && (
             <Table aria-label="simple table">

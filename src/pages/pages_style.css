@@ -1,4 +1,7 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,300;1,400&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -98,7 +101,7 @@
 
 
 .main_about_us_container{
-    background-color: rgb(232 241 232);
+    background-color: white;
     height: 100%;
     width: 100%;    
     padding: 30px 0px;
@@ -178,3 +181,9 @@ flex-direction: column;
 align-items: center;
 justify-content: center;
 }
+
+.main_blog_content_did{
+    font-family: 'Poppins', sans-serif;
+
+}
+

@@ -25,20 +25,22 @@ class QuestionPannel extends React.Component {
 
     return (
       <div className="question_pannel__container">
-       { <Card sx={{ maxWidth: 1500, minWidth: 800  }} >
+       { <Card sx={{ maxWidth: "86vw", minWidth: "79vw",maxHeight:"100%", backgroundColor:"#fafafa"  }} >
        {showTheReload && <CircularProgress/>}
-       {!showTheReload&&<><Typography gutterBottom variant="h4" component="div">
+      
+       {!showTheReload&&<><Typography gutterBottom variant="h4" sx={{marginTop:"10px", padding:"6px 3px", color:"#0077B6", fontSize:"2.3vw"}} component="div">
           {`${question}?`}
         </Typography>
+
       <CardActions >
-      <div className="options__container">
+      <div className="options__container" style={{height:"100%"}}>
        {
         options && options.map((option)=>(
           <button
                 disabled={isClicked}
                 onClick={() => handleOptionClick(option)}
                 key={nanoid()}
-                style={{margin:10}}
+                style={{margin:10, maxWidth:"30vw", minWidth:"30vw", minHeight:"8vh"}}
                 className={`option ${isClicked && handleAnsChecker(option)}`}
               >
                 {option}
@@ -47,7 +49,7 @@ class QuestionPannel extends React.Component {
        }
        </div>
       </CardActions>
-      <Button disabled={!isClicked} onClick={handleNextQuestion} variant="contained">Next Question</Button>
+      <Button disabled={!isClicked} sx={{minHeight:"6vh", fontSize:"1vw", marginTop:"2vh"}} onClick={handleNextQuestion} variant="contained">Next Question</Button>
       </>}
     </Card> }
     

@@ -1,3 +1,12 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&family=Roboto&display=swap');
+
+*{
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+
+}
+
 .question__container{
     height: 100%;
     width: 100%;
@@ -8,7 +17,8 @@
     
   
     .main_component_container{
-        background-color: #f9f9fa;
+        height: 100%;
+        background-color: white;
     }
 
     .question_pannel__container{
@@ -19,7 +29,7 @@
         bottom: 0;
         background-color: white;
         width: 80%;
-        border: 2px solid green;
+        /* border: 2px solid green; */
         height: 50%;
         margin-bottom: 40px;
     }
