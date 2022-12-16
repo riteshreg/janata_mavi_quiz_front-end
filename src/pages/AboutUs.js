@@ -26,7 +26,7 @@ function AboutUs() {
 
         <Stack direction="row">
           <ImageCard name="Anup Dahal" src={anupImg} description={"Web Tester and Data entry on Janata Quiz app"}/>
-          <ImageCard name="Saugat Bhattrai" src={saugatImg} description={"ielts classes homework writer on meeting"}/>
+          <ImageCard name="Saugat Bhattrai" src={saugatImg} description={"Api Tester on postman"}/>
         </Stack>
 
     
