@@ -28,7 +28,7 @@ class QuestionPannel extends React.Component {
        { <Card sx={{ maxWidth: "86vw", minWidth: "79vw",maxHeight:"100%", backgroundColor:"#fafafa"  }} >
        {showTheReload && <CircularProgress/>}
       
-       {!showTheReload&&<><Typography gutterBottom variant="h4" sx={{marginTop:"10px", padding:"6px 3px", color:"#0077B6", fontSize:"2.3vw"}} component="div">
+       {!showTheReload&&<><Typography gutterBottom variant="h4" sx={{marginTop:"10px", padding:"6px 3px", color:"#292f33", fontSize:"2.3vw"}} component="div">
           {`${question}?`}
         </Typography>
 
@@ -49,7 +49,7 @@ class QuestionPannel extends React.Component {
        }
        </div>
       </CardActions>
-      <Button disabled={!isClicked} sx={{minHeight:"6vh", fontSize:"1vw", marginTop:"2vh"}} onClick={handleNextQuestion} variant="contained">Next Question</Button>
+      <Button disabled={!isClicked} sx={{minHeight:"6vh", fontSize:"0.8rem", marginTop:"2vh"}} onClick={handleNextQuestion} variant="contained">Next Question</Button>
       </>}
     </Card> }
     

@@ -17,7 +17,7 @@ function Navbar() {
   }
 
   return (
-    <div className='nav-bar_container'>
+    <div className='nav-bar_container' style={{minHeight:"3.6vh", fontSize:"0.97rem"}}>
         <ul>
 
         {

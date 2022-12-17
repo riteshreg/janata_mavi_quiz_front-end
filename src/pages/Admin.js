@@ -25,7 +25,7 @@ export class Admin extends Component {
     this.state = {
       fetchData: [],
       page: 0,
-      rowsPerPage: 10,
+      rowsPerPage: 15,
       shouldDeletedId: null,
       openModal: false,
       progress:false,
@@ -65,6 +65,14 @@ export class Admin extends Component {
     borderRadius:"8px",
     border:"2px solid green"
   };
+
+  font_size = {
+    fontSize:"1.06rem",
+    color:"#292f33",
+    fontFamily: 'Roboto',
+
+  }
+
 
   handleDelete = () => {
 
@@ -117,12 +125,12 @@ export class Admin extends Component {
             <Table aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell>Questions</TableCell>
-                  <TableCell align="right">Option1</TableCell>
-                  <TableCell align="right">Option2</TableCell>
-                  <TableCell align="right">Option3</TableCell>
-                  <TableCell align="right">Correct Answer</TableCell>
-                  <TableCell align="center">tools</TableCell>
+                  <TableCell sx={this.font_size} align="left">Questions</TableCell>
+                  <TableCell sx={this.font_size} align="right">Option1</TableCell>
+                  <TableCell sx={this.font_size} align="right">Option2</TableCell>
+                  <TableCell sx={this.font_size} align="right">Option3</TableCell>
+                  <TableCell sx={this.font_size} align="right">Answer</TableCell>
+                  <TableCell sx={this.font_size} align="center">tools</TableCell>
                 </TableRow>
               </TableHead>
 
@@ -137,13 +145,15 @@ export class Admin extends Component {
                     <TableRow key={row._id}>
                       <TableCell
                         component="th"
-                        style={{ fontSize: "16px", fontWeight: "500" }}
+                        sx={this.font_size}
+                        style={{  fontWeight: "500" }}
                         scope="row"
                       >
                         {row.question}
                       </TableCell>
                       <TableCell
                         component="th"
+                        sx={this.font_size}
                         tyle={{ fontSize: "16px", fontWeight: "500" }}
                         align="right"
                         scope="row"
@@ -151,25 +161,28 @@ export class Admin extends Component {
                         {row.option1}
                       </TableCell>
                       <TableCell
-                        style={{ fontSize: "16px", fontWeight: "500" }}
+                      sx={this.font_size}
+                        style={{ fontWeight: "500" }}
                         align="right"
                       >
                         {row.option2}
                       </TableCell>
                       <TableCell
-                        tyle={{ fontSize: "16px", fontWeight: "500" }}
+                      sx={this.font_size}
+                        tyle={{ fontWeight: "500" }}
                         align="right"
                       >
                         {row.option3}
                       </TableCell>
                       <TableCell
-                        tyle={{ fontSize: "16px", fontWeight: "500" }}
+                      sx={this.font_size}
+                        style={{  fontWeight: "500" }}
                         align="right"
                       >
                         {row.correctAnswer}
                       </TableCell>
 
-                      <TableCell align="right">
+                      <TableCell sx={this.font_size} align="right">
                         {/* for edit */}
                         <div
                           className="iconDiv"
@@ -181,12 +194,13 @@ export class Admin extends Component {
                           }}
                         >
                           <Link to={`/update/${row._id}`}>
-                            <EditIcon
+                            <EditIcon sx={{height:"1.5rem"}}
                               style={{ padding: "2px", margin: "0px 5px" }}
                             />
                           </Link>
                           {/* for update */}
                           <DeleteIcon
+                          sx={{height:"1.5rem"}}
                             style={{
                               cursor: "pointer",
                               padding: "2px",
@@ -203,7 +217,8 @@ export class Admin extends Component {
           )}
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[10, 25, 100]}
+        sx={{minHeight:"5vh", fontSize:"1.2rem"}}
+          rowsPerPageOptions={[15, 35, 100]}
           count={this.state.fetchData.length}
           rowsPerPage={this.state.rowsPerPage}
           page={this.state.page}

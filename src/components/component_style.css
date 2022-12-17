@@ -63,13 +63,13 @@
   background-color: #fff;
   border: 2px solid #000;
   box-sizing: border-box;
-  color: #0096C7;
+  color: #292f33;
   cursor: pointer;
   display: inline-flex;
   fill: #000;
   font-family: Inter,sans-serif;
-  font-size: 1.2vw;
-  font-weight: 550;
+  font-size: 1.2rem;
+  font-weight: 500;
   height: 48px;
   justify-content: center;
   letter-spacing: -.8px;
