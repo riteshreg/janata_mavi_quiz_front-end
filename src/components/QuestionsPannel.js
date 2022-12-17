@@ -25,7 +25,7 @@ class QuestionPannel extends React.Component {
 
     return (
       <div className="question_pannel__container">
-       { <Card sx={{ maxWidth: "86vw", minWidth: "79vw",maxHeight:"100%", backgroundColor:"#fafafa"  }} >
+       { <Card sx={{ maxWidth: "86vw", minWidth: "79vw",maxHeight:"100%", backgroundColor:"#FBF9F9"  }} >
        {showTheReload && <CircularProgress/>}
       
        {!showTheReload&&<><Typography gutterBottom variant="h4" sx={{marginTop:"10px", padding:"6px 3px", color:"#292f33", fontSize:"2.3vw"}} component="div">

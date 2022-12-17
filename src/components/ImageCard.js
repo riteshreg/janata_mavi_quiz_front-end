@@ -9,7 +9,7 @@ const ImageCard = ({ name, src, description }) => {
   return (
     <div className="ritesh_about_us_container">
       <Card
-        sx={{ minWidth: 350, borderRadius: "20px", backgroundColor: "#f4f4f4" }}
+        sx={{ minWidth: 346, borderRadius: "20px", backgroundColor: "#FBFBFB" }}
         className="ritesh_card_main"
       >
         <CardContent className="ritesh_card" sx={{ textAlign: "center" }}>

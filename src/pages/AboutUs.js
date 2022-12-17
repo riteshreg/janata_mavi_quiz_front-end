@@ -31,7 +31,7 @@ function AboutUs() {
 
     
         <Stack direction="row">
-          <ImageCard name="Gopal Bhandari" src={gopalImg} description={"Ui and Ux designer and Web Tester "}/>
+          <ImageCard name="Gopal Bhandari" src={gopalImg} description={"Ui,Ux designer and Web Tester "}/>
           <ImageCard name="Nabina Subedi" src={nabinaImg} description={"Project Manager"}/>
         </Stack>
 
