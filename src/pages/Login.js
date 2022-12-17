@@ -7,10 +7,6 @@ import { useNavigate } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
 import Alert from "@mui/material/Alert";
 
-// import LinearProgress from '@mui/material/LinearProgress';
-// import Box from '@mui/material/Box';
-
-// import { Input } from "@mui/material";
 import "./pages_style.css";
 
 const Login = () => {
@@ -83,7 +79,7 @@ const Login = () => {
             variant="outlined"
           />
           <FormHelperText id="my-helper-text">
-            Enter your admin userid
+            Enter your admin user id
           </FormHelperText>
         </FormControl>
         <FormControl className="login_form">

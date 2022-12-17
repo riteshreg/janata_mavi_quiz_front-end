@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 class TextResult extends React.Component{
  
 
