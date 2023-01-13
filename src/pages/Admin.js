@@ -25,6 +25,7 @@ export class Admin extends Component {
       fetchData: [],
       skip: 0,
       rowsPerPage: 15,
+      setThePositionPagination:false,
       numOfData: null,
       shouldDeletedId: null,
       openModal: false,
@@ -34,12 +35,15 @@ export class Admin extends Component {
 
   componentDidMount() {
     if (this.state.fetchData.length === 0) {
-      fetch(`https://janta-mabi-quiz.onrender.com/admin_question/${this.state.skip}`).then((response) => {
+      fetch(
+        `https://janta-mabi-quiz.onrender.com/admin_question/${this.state.skip}`
+      ).then((response) => {
         response.json().then((result) => {
-          console.log(result)
+          console.log(result);
           this.setState({
             fetchData: result.data,
             numOfData: result.numOfItems,
+            setThePositionPagination:false,
           });
         });
       });
@@ -47,18 +51,20 @@ export class Admin extends Component {
   }
   componentDidUpdate(prevProps, prevState) {
     if (this.state.skip !== prevState.skip) {
-      fetch(`https://janta-mabi-quiz.onrender.com/admin_question/${this.state.skip}`).then((response) => {
+      fetch(
+        `https://janta-mabi-quiz.onrender.com/admin_question/${this.state.skip}`
+      ).then((response) => {
         response.json().then((result) => {
           this.setState({
             fetchData: result.data,
             numOfData: result.numOfItems,
+            setThePositionPagination:false,
           });
         });
       });
     }
   }
 
- 
   ModalStyle = {
     position: "absolute",
     top: "50%",
@@ -78,6 +84,7 @@ export class Admin extends Component {
     fontFamily: "Roboto",
   };
 
+
   handleDelete = () => {
     this.setState({ progress: true });
     fetch(
@@ -92,6 +99,9 @@ export class Admin extends Component {
       this.setState({ fetchData: newData, openModal: false, progress: false });
     });
   };
+  
+
+  
 
   render() {
     console.log(this.state.numOfData);
@@ -172,92 +182,98 @@ export class Admin extends Component {
               </TableHead>
 
               <TableBody>
-                {this.state.fetchData
-                .map((row, index) => (
-                    <TableRow key={row._id}>
-                      <TableCell
-                        component="th"
-                        sx={this.font_size}
-                        style={{ fontWeight: "500" }}
-                        scope="row"
-                      >
-                        {row.question}
-                      </TableCell>
-                      <TableCell
-                        component="th"
-                        sx={this.font_size}
-                        tyle={{ fontSize: "16px", fontWeight: "500" }}
-                        align="right"
-                        scope="row"
-                      >
-                        {row.option1}
-                      </TableCell>
-                      <TableCell
-                        sx={this.font_size}
-                        style={{ fontWeight: "500" }}
-                        align="right"
-                      >
-                        {row.option2}
-                      </TableCell>
-                      <TableCell
-                        sx={this.font_size}
-                        tyle={{ fontWeight: "500" }}
-                        align="right"
-                      >
-                        {row.option3}
-                      </TableCell>
-                      <TableCell
-                        sx={this.font_size}
-                        style={{ fontWeight: "500" }}
-                        align="right"
-                      >
-                        {row.correctAnswer}
-                      </TableCell>
+                {this.state.fetchData.map((row, index) => (
+                  <TableRow key={row._id}>
+                    <TableCell
+                      component="th"
+                      sx={this.font_size}
+                      style={{ fontWeight: "500" }}
+                      scope="row"
+                    >
+                      {row.question}
+                    </TableCell>
+                    <TableCell
+                      component="th"
+                      sx={this.font_size}
+                      tyle={{ fontSize: "16px", fontWeight: "500" }}
+                      align="right"
+                      scope="row"
+                    >
+                      {row.option1}
+                    </TableCell>
+                    <TableCell
+                      sx={this.font_size}
+                      style={{ fontWeight: "500" }}
+                      align="right"
+                    >
+                      {row.option2}
+                    </TableCell>
+                    <TableCell
+                      sx={this.font_size}
+                      tyle={{ fontWeight: "500" }}
+                      align="right"
+                    >
+                      {row.option3}
+                    </TableCell>
+                    <TableCell
+                      sx={this.font_size}
+                      style={{ fontWeight: "500" }}
+                      align="right"
+                    >
+                      {row.correctAnswer}
+                    </TableCell>
 
-                      <TableCell sx={this.font_size} align="right">
-                        {/* for edit */}
-                        <div
-                          className="iconDiv"
-                          style={{
-                            display: "flex",
-                            alignItem: "center",
-                            justifyContent: "end",
-                            padding: "2px 3px",
-                          }}
-                        >
-                          <Link to={`/update/${row._id}`}>
-                            <EditIcon
-                              sx={{ height: "1.5rem" }}
-                              style={{ padding: "2px", margin: "0px 5px" }}
-                            />
-                          </Link>
-                          {/* for update */}
-                          <DeleteIcon
+                    <TableCell sx={this.font_size} align="right">
+                      {/* for edit */}
+                      <div
+                        className="iconDiv"
+                        style={{
+                          display: "flex",
+                          alignItem: "center",
+                          justifyContent: "end",
+                          padding: "2px 3px",
+                        }}
+                      >
+                        <Link to={`/update/${row._id}`}>
+                          <EditIcon
                             sx={{ height: "1.5rem" }}
-                            style={{
-                              cursor: "pointer",
-                              padding: "2px",
-                              margin: "0px 5px",
-                            }}
-                            onClick={() =>
-                              this.setState({
-                                openModal: true,
-                                shouldDeletedId: row._id,
-                              })
-                            }
+                            style={{ padding: "2px", margin: "0px 5px" }}
                           />
-                        </div>
-                      </TableCell>
-                    </TableRow>
-                  ))}
+                        </Link>
+                        {/* for update */}
+                        <DeleteIcon
+                          sx={{ height: "1.5rem" }}
+                          style={{
+                            cursor: "pointer",
+                            padding: "2px",
+                            margin: "0px 5px",
+                          }}
+                          onClick={() =>
+                            this.setState({
+                              openModal: true,
+                              shouldDeletedId: row._id,
+                            })
+                          }
+                        />
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ))}
               </TableBody>
             </Table>
           )}
+            {/* marginBottom: "10px",
+              padding: "8px 6px",
+              marginTop:"10px",
+              position: "absolute",
+              right: 0,
+              color:"red",
+              marginRight: "20px", */}
           <Pagination
-            style={{ marginBottom: "10px", padding: "8px 6px", position:"absolute",right:0, marginRight:"20px" }}
+            style={this.state.setThePositionPagination?{margin:"8px 4px",position:'absolute',bottom:0, right:0,padding:"5px 8px"}:{margin:"8px 4px",position:'absolute', right:0,padding:"5px 8px"}}
             count={Math.floor(this.state.numOfData / 10) - 1}
             onChange={(e, value) => {
-              this.setState({ skip: value * 10 });
+              this.setState({ skip: value * 10, fetchData: [], setThePositionPagination:true });
               window.scrollTo({
                 top: 0,
                 behavior: "smooth",
